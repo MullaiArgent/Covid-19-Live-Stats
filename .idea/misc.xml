@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="MavenProjectsManager">
+    <option name="originalFiles">
+      <list>
+        <option value="$PROJECT_DIR$/pom.xml" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectResources">
+    <resource url="http://www.springframework.org/schema/beans" location="$USER_HOME$/AppData/Local/JetBrains/IdeaIC2021.1/extResources/334543e7_spring-beans.xsd" />
+    <resource url="http://www.thymeleaf.org" location="$USER_HOME$/AppData/Local/JetBrains/IdeaIC2021.1/extResources/334543e7_spring-beans.xsd" />
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_16" default="true" project-jdk-name="16" project-jdk-type="JavaSDK" />
+</project>
