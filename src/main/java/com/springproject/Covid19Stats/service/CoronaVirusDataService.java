@@ -4,7 +4,6 @@ import com.springproject.Covid19Stats.models.LocationStats;
 import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVRecord;
 import org.springframework.stereotype.Service;
-
 import javax.annotation.PostConstruct;
 import java.io.IOException;
 import java.io.StringReader;
@@ -36,8 +35,9 @@ public class CoronaVirusDataService {
     public void fetchVirusData() throws IOException, InterruptedException {
         List<LocationStats> stats = new ArrayList<>();
         List<LocationStats> stats2 = new ArrayList<>();
-        LocationStats record2 = null;
+
         HttpClient client = HttpClient.newHttpClient();
+        
         HttpRequest request1 = HttpRequest.newBuilder()
                 .uri(URI.create(STATE_DATA_URl))
                 .build();
