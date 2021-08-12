@@ -15,6 +15,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Service
+@EnableScheduling
 public class CoronaVirusDataService {
     public List<LocationStats> getAllStates() {
         return allStates;
@@ -32,6 +33,7 @@ public class CoronaVirusDataService {
     private static final String DAILY_DATA_URL = "https://raw.githubusercontent.com/datasets/covid-19/main/data/worldwide-aggregate.csv";
 
     @PostConstruct
+    @Scheduled(cron="* * * * * * ")
     public void fetchVirusData() throws IOException, InterruptedException {
         List<LocationStats> stats = new ArrayList<>();
         List<LocationStats> stats2 = new ArrayList<>();
