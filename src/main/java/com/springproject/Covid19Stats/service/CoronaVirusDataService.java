@@ -1,6 +1,6 @@
 package com.springproject.Covid19Stats.service;
 
-import com.springproject.Covid19Stats.models.LocationStats;
+import com.springproject.Covid19Stats.models.CoronaVirusDataModel;
 import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVRecord;
 import org.springframework.stereotype.Service;
@@ -17,16 +17,16 @@ import java.util.List;
 @Service
 @EnableScheduling
 public class CoronaVirusDataService {
-    public List<LocationStats> getAllStates() {
+    public List<CoronaVirusDataModel> getAllStates() {
         return allStates;
     }
 
-    public List<LocationStats> getAllStates2() {
+    public List<CoronaVirusDataModel> getAllStates2() {
         return allStates2;
     }
 
-    private List<LocationStats> allStates = new ArrayList<>();
-    private List<LocationStats> allStates2 = new ArrayList<>();
+    private List<CoronaVirusDataModel> allStates = new ArrayList<>();
+    private List<CoronaVirusDataModel> allStates2 = new ArrayList<>();
 
 
     private static final String STATE_DATA_URl = "https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_confirmed_global.csv";
@@ -35,8 +35,8 @@ public class CoronaVirusDataService {
     @PostConstruct
     @Scheduled(cron="* * * * * * ")
     public void fetchVirusData() throws IOException, InterruptedException {
-        List<LocationStats> stats = new ArrayList<>();
-        List<LocationStats> stats2 = new ArrayList<>();
+        List<CoronaVirusDataModel> stats = new ArrayList<>();
+        List<CoronaVirusDataModel> stats2 = new ArrayList<>();
 
         HttpClient client = HttpClient.newHttpClient();
         
@@ -55,14 +55,14 @@ public class CoronaVirusDataService {
         Iterable<CSVRecord> records1 = CSVFormat.DEFAULT.withFirstRecordAsHeader().parse(csvBody1);
         Iterable<CSVRecord> records2 = CSVFormat.DEFAULT.withFirstRecordAsHeader().parse(csvBody2);
         for(CSVRecord record : records1){
-            LocationStats temp = new LocationStats();
+            CoronaVirusDataModel temp = new CoronaVirusDataModel();
             temp.setState(record.get("Province/State"));
             temp.setCountry(record.get("Country/Region"));
             temp.setToday(record.get(record.size() - 1));
             stats.add(temp);
         }
         for(CSVRecord record : records2){
-            LocationStats temp = new LocationStats();
+            CoronaVirusDataModel temp = new CoronaVirusDataModel();
             temp.setDate(record.get("Date"));
             temp.setDeaths(record.get("Deaths"));
             temp.setConfirmed(record.get("Confirmed"));

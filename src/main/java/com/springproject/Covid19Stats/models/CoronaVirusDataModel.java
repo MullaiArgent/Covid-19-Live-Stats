@@ -1,6 +1,6 @@
 package com.springproject.Covid19Stats.models;
 
-public class LocationStats {
+public class CoronaVirusDataModel {
     private String state;
     private String country;
     private String today;

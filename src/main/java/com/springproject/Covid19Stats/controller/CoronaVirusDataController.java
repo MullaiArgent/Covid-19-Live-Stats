@@ -7,12 +7,12 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
-public class HomeController {
+public class CoronaVirusDataController {
 
     @Autowired
     CoronaVirusDataService coronaVirusDataService;
 
-    @GetMapping("/")
+    @GetMapping("/CoronaVirusData")
     public String home(Model model){
         model.addAttribute("data",coronaVirusDataService.getAllStates());
         model.addAttribute("data1", coronaVirusDataService.getAllStates2());
