@@ -1,4 +1,4 @@
-package com.springproject.Covid19Stats.models;
+package com.springproject.Covid19Stats.coronavirusdata;
 
 public class CoronaVirusDataModel {
     private String state;

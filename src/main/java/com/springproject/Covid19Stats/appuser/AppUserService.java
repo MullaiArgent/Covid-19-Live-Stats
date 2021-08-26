@@ -1,6 +1,5 @@
-package com.springproject.Covid19Stats.service;
+package com.springproject.Covid19Stats.appuser;
 
-import com.springproject.Covid19Stats.dao.AppUserRepo;
 import lombok.AllArgsConstructor;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;

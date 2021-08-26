@@ -1,6 +1,5 @@
-package com.springproject.Covid19Stats.dao;
+package com.springproject.Covid19Stats.appuser;
 
-import com.springproject.Covid19Stats.models.AppUser;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 

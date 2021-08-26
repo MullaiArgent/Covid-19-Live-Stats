@@ -1,6 +1,5 @@
-package com.springproject.Covid19Stats.controller;
+package com.springproject.Covid19Stats.coronavirusdata;
 
-import com.springproject.Covid19Stats.service.CoronaVirusDataService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -12,7 +11,7 @@ public class CoronaVirusDataController {
     @Autowired
     CoronaVirusDataService coronaVirusDataService;
 
-    @GetMapping("/CoronaVirusData")
+    @GetMapping("/")
     public String home(Model model){
         model.addAttribute("data",coronaVirusDataService.getAllStates());
         model.addAttribute("data1", coronaVirusDataService.getAllStates2());

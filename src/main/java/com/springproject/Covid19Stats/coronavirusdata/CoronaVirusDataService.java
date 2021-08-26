@@ -1,8 +1,9 @@
-package com.springproject.Covid19Stats.service;
+package com.springproject.Covid19Stats.coronavirusdata;
 
-import com.springproject.Covid19Stats.models.CoronaVirusDataModel;
 import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVRecord;
+import org.springframework.scheduling.annotation.EnableScheduling;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 import javax.annotation.PostConstruct;
 import java.io.IOException;
