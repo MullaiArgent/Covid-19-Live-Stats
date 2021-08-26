@@ -1,0 +1,14 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Spring Boot-Covid19StatsApplication<Covid-19Stats>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "console": "internalConsole",
+            "mainClass": "com.springproject.Covid19Stats.Covid19StatsApplication",
+            "projectName": "Covid-19Stats",
+            "args": ""
+        }
+    ]
+}
