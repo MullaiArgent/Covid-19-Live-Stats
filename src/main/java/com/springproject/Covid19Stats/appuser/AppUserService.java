@@ -15,6 +15,7 @@ import java.util.UUID;
 @Service
 @AllArgsConstructor
 public class AppUserService implements UserDetailsService{
+
     private final String USER_NOT_FOUND_MSG = "user with email %s Not Found";
     private final AppUserRepo appUserRepo;
     private final BCryptPasswordEncoder bCryptPasswordEncoder;
@@ -34,10 +35,13 @@ public class AppUserService implements UserDetailsService{
         }
 
         String encodedPassword  = bCryptPasswordEncoder.encode(appUser.getPassword());
+
         appUser.setPassword(encodedPassword);
 
         appUserRepo.save(appUser);
+
         String token = UUID.randomUUID().toString();
+
         ConfirmationToken confirmationToken = new ConfirmationToken(
                 token,
                 LocalDateTime.now(),
@@ -46,6 +50,11 @@ public class AppUserService implements UserDetailsService{
         );
         confirmationTokenService.saveConfirmationToken(confirmationToken);
 
+        //TODO: send mail
+
         return token;
+    }
+    public int enableAppUser(String email){
+        return appUserRepo.enableAppUser(email);
     }
 }
