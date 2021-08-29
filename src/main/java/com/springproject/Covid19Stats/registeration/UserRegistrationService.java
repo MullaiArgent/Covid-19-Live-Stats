@@ -14,24 +14,29 @@ import java.time.LocalDateTime;
 @Service
 @AllArgsConstructor
 public class UserRegistrationService {
+
     private final AppUserService appUserService;
     private final EmailValidator emailValidator;
     private final ConfirmationTokenService confirmationTokenService;
 
     public String register(UserRegistrationRequest request) {
         boolean isValidEmail = emailValidator.test(request.getEmail());
-        if(!isValidEmail){
+
+        if (!isValidEmail) {
             throw new IllegalStateException("Email not Valid");
         }
 
-        return appUserService.signUpUser(new AppUser(
+        String token = appUserService.signUpUser(new AppUser(
                 request.getFirstname(),
                 request.getLastname(),
                 request.getEmail(),
                 request.getPassword(),
-                AppUserRole.USER_ROLE
+                AppUserRole.USER
+
         ));
+        return token;
     }
+
     @Transactional
     public String confirmToken(String token){
         ConfirmationToken confirmationToken = confirmationTokenService

@@ -20,10 +20,11 @@ public class AppUserService implements UserDetailsService{
     private final AppUserRepo appUserRepo;
     private final BCryptPasswordEncoder bCryptPasswordEncoder;
     private final ConfirmationTokenService confirmationTokenService;
+
     @Override
-    public UserDetails loadUserByUsername(String s) throws UsernameNotFoundException {
-        return appUserRepo.findByEmail(s).orElseThrow(
-                () -> new UsernameNotFoundException(String.format(USER_NOT_FOUND_MSG,s)));
+    public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
+        return appUserRepo.findByEmail(email).orElseThrow(
+                () -> new UsernameNotFoundException(String.format(USER_NOT_FOUND_MSG,email)));
     }
 
     public String signUpUser(AppUser appUser)  {
